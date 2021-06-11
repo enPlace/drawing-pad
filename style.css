@@ -6,6 +6,6 @@
     flex-wrap: wrap;
 }
 .cell{
-    border: 1px solid black; 
+    border: .5px solid gray; 
     box-sizing: border-box;
 }
