@@ -1,9 +1,12 @@
 const container = document.getElementById('container')
-function deleteBoxes(){
 
+function deleteChildren(parent){
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild)
+    }
 }
 
-function addBox(num){
+function populateCells(num){
     for(let i =0; i<num*num; i++){
         let celldim = 500/num
         let newBox = document.createElement('div')
@@ -12,4 +15,10 @@ function addBox(num){
         newBox.style.height=celldim.toString() +"px"
         container.appendChild(newBox)
     }
+}
+
+function newCells(num){
+    deleteChildren(container)
+    populateCells(num)
+
 }
