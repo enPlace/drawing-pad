@@ -1,4 +1,5 @@
 const container = document.getElementById('container')
+const slider = document.getElementById("myRange");
 let paintColor ='black'
 let canvasColor = 'white'
 let mouseDown = false
@@ -21,11 +22,22 @@ container.addEventListener('mouseover', (e)=>{
     }
 })
 
+slider.addEventListener('input', ()=>{
+    document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
+    newCells(slider.value)
+    })
+
 function newCells(num, bkgd){
     deleteChildren(container)
     populateCells(num, bkgd)
 }
-
+function reset(){
+    canvasColor='white'
+    paintColor='black'
+    slider.value = "30"
+    document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
+    newCells(30, canvasColor)
+}
 function deleteChildren(parent){
     while(parent.firstChild){
         parent.removeChild(parent.firstChild)
@@ -71,7 +83,9 @@ function randomColor(){
 }
 
 
-newCells(34)
+newCells(slider.value)
 
 //add a class list active to cell when painting 
 //check to see if active when reseting the color
+//random color
+//slider for setting grid 

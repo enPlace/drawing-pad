@@ -9,10 +9,20 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="container" id ="container">
+    <div class="slidecontainer">
+        Grid size:
+        <div id = "size-display">30x30</div>
+        <input type="range" min="1" max="60" value="30" class="slider" id="myRange">
+        <button onclick="reset()">Reset</button>
+      </div>
 
+    <div class="display">
+       
+    <div class="container" id ="container">
     </div>
-    <div id="pen-colors">
+    <div class="settings">
+        
+    <div id="pen-colors" class = "color-buttons">
         Pen Colors:
         <button onclick="setColor('white');">White</button>
         <button onclick="setColor('black');">Black</button>
@@ -23,7 +33,8 @@
         <button onclick="setColor(randomColor());">Random</button>
         
       </div>
-      <div id="bkgd-colors">
+      
+      <div id="bkgd-colors"class = "color-buttons">
         Background Colors:
         <button onclick="setBkgd('white');">White</button>
         <button onclick="setBkgd('black');">Black</button>
@@ -33,5 +44,7 @@
         <button onclick="setBkgd('green');">Green</button>
         <button onclick="setBkgd(randomColor());">Random</button>
       </div>
+    </div>
+</div>
 </body>
 </html>
