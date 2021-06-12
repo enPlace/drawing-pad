@@ -1,6 +1,9 @@
 const container = document.getElementById('container')
-let paintColor ='red'
+let paintColor ='black'
+let canvasColor = 'white'
 let mouseDown = false
+let cellCount 
+
 
 
 document.addEventListener('mousedown', (e)=>{
@@ -18,9 +21,9 @@ container.addEventListener('mouseover', (e)=>{
     }
 })
 
-function newCells(num){
+function newCells(num, bkgd){
     deleteChildren(container)
-    populateCells(num)
+    populateCells(num, bkgd)
 }
 
 function deleteChildren(parent){
@@ -29,14 +32,16 @@ function deleteChildren(parent){
     }
 }
 
-function populateCells(num){
+function populateCells(num, bkgd = canvasColor){
     for(let i =0; i<num*num; i++){
         let celldim = 500/num
         let newBox = document.createElement('div')
         newBox.classList.add('cell')
         newBox.style.width=celldim.toString() +"px"
         newBox.style.height=celldim.toString() +"px"
+        newBox.style.backgroundColor = bkgd
         container.appendChild(newBox)
+
     }
 }
 
@@ -47,13 +52,26 @@ function clearGrid(){
     }
 }
 
-function randomColor(){
-
+function setColor(color){
+    paintColor = color
 }
 
-//button can change the data-status to indicate color
-//use a color wheel to select specific color. 
-//take that data and use it as a variable for the color in the event
-// 
+function setBkgd(color){
+    const cells = document.getElementsByClassName('cell')
+    for(let i=0; i<cells.length; i++){
+        if(cells[i].style.backgroundColor==canvasColor){
+            cells[i].style.backgroundColor = color
+        }
+    }
+    canvasColor = color
+}
+
+
+function randomColor(){
+}
+
 
 newCells(34)
+
+//add a class list active to cell when painting 
+//check to see if active when reseting the color

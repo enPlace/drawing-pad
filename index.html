@@ -12,13 +12,26 @@
     <div class="container" id ="container">
 
     </div>
-    <div id="settings">
+    <div id="pen-colors">
+        Pen Colors:
+        <button onclick="setColor('white');">White</button>
         <button onclick="setColor('black');">Black</button>
+        <button onclick="setColor('grey');">Grey</button>
         <button onclick="setColor('blue');">Blue</button>
         <button onclick="setColor('red');">Red</button>
         <button onclick="setColor('green');">Green</button>
-        <button onclick="setColor('white');">White</button>
+        <button onclick="setColor(randomColor());">Random</button>
         
+      </div>
+      <div id="bkgd-colors">
+        Background Colors:
+        <button onclick="setBkgd('white');">White</button>
+        <button onclick="setBkgd('black');">Black</button>
+        <button onclick="setBkgd('grey');">Grey</button>
+        <button onclick="setBkgd('blue');">Blue</button>
+        <button onclick="setBkgd('red');">Red</button>
+        <button onclick="setBkgd('green');">Green</button>
+        <button onclick="setBkgd(randomColor());">Random</button>
       </div>
 </body>
 </html>
