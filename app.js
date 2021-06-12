@@ -1,4 +1,27 @@
 const container = document.getElementById('container')
+let paintColor ='red'
+let mouseDown = false
+
+
+document.addEventListener('mousedown', (e)=>{
+    mouseDown = true
+    if(e.target.classList.contains("cell")){
+        e.target.style.backgroundColor = paintColor
+    }
+})
+document.addEventListener('mouseup', ()=>{
+    mouseDown = false
+})
+container.addEventListener('mouseover', (e)=>{
+    if(mouseDown&&e.target.classList.contains('cell')){
+    e.target.style.backgroundColor = paintColor
+    }
+})
+
+function newCells(num){
+    deleteChildren(container)
+    populateCells(num)
+}
 
 function deleteChildren(parent){
     while(parent.firstChild){
@@ -17,15 +40,20 @@ function populateCells(num){
     }
 }
 
-function newCells(num){
-    deleteChildren(container)
-    populateCells(num)
-
-}
-
 function clearGrid(){
     const cells = document.getElementsByClassName("cell")
     for (let i = 0; i<cells.length; i++){
         cells[i].style.border = "none"
     }
 }
+
+function randomColor(){
+
+}
+
+//button can change the data-status to indicate color
+//use a color wheel to select specific color. 
+//take that data and use it as a variable for the color in the event
+// 
+
+newCells(34)
