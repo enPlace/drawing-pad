@@ -11,6 +11,7 @@ document.addEventListener('mousedown', (e)=>{
     mouseDown = true
     if(e.target.classList.contains("cell")){
         e.target.style.backgroundColor = paintColor
+        e.target.dataset.status = "active"
     }
 })
 document.addEventListener('mouseup', ()=>{
@@ -19,6 +20,7 @@ document.addEventListener('mouseup', ()=>{
 container.addEventListener('mouseover', (e)=>{
     if(mouseDown&&e.target.classList.contains('cell')){
     e.target.style.backgroundColor = paintColor
+    e.target.dataset.status = "active"
     }
 })
 
@@ -37,6 +39,8 @@ function reset(){
     slider.value = "30"
     document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
     newCells(30, canvasColor)
+    document.getElementById("grid-button").dataset.status = "none"
+    clearGrid()
 }
 function deleteChildren(parent){
     while(parent.firstChild){
@@ -59,9 +63,25 @@ function populateCells(num, bkgd = canvasColor){
 
 function clearGrid(){
     const cells = document.getElementsByClassName("cell")
-    for (let i = 0; i<cells.length; i++){
-        cells[i].style.border = "none"
+    const gridButton =  document.getElementById("grid-button")
+    if(gridButton.dataset.status == "shown"){
+        for (let i = 0; i<cells.length; i++){
+            cells[i].style.border = "none"
+        }
+        gridButton.dataset.status= "none"
+        gridButton.innerHTML = "Show Grid"
     }
+    else{
+        for (let i = 0; i<cells.length; i++){
+            cells[i].style.border = ".5px solid rgb(172, 167, 167)"
+            gridButton.dataset.status = "shown"
+            gridButton.innerHTML = "Hide Grid"
+
+        }
+    }
+
+    
+
 }
 
 function setColor(color){
@@ -71,17 +91,17 @@ function setColor(color){
 function setBkgd(color){
     const cells = document.getElementsByClassName('cell')
     for(let i=0; i<cells.length; i++){
-        if(cells[i].style.backgroundColor==canvasColor){
+        if(cells[i].dataset.status !="active"){
             cells[i].style.backgroundColor = color
         }
     }
     canvasColor = color
 }
 
-
+function rgb(){return Math.floor(Math.random()*255)}
 function randomColor(){
+    return `rgb(${rgb()}, ${rgb()}, ${rgb()})`
 }
-
 
 newCells(slider.value)
 

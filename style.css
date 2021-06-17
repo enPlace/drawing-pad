@@ -31,7 +31,8 @@ body{
 }
 .settings{
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    margin-top: 50px;
 }
 .color-buttons{
     display: flex;
@@ -41,3 +42,37 @@ body{
 button{
     margin: 2px;
 }
+
+@media only screen and (max-width: 920px) {
+    .settings {
+      justify-content: center;
+      align-items: center;
+      margin-top: 0;
+      margin-left: 100px;
+    }
+    .color-buttons{
+        flex-direction: row;
+    }
+    .container{
+        margin-top: 20px;
+        margin-bottom: 20px; 
+    }
+  }
+
+  @media only screen and (max-width: 775px) {
+    .settings {
+      justify-content: center;
+      align-items: center;
+      margin-top: 0;
+      margin-left: 0px;
+    }
+    .color-buttons{
+        flex-direction: row;
+    }
+    .container{
+        margin-top: 20px;
+    }
+    .slidecontainer{
+        margin-top: 20px;
+      }
+  } 

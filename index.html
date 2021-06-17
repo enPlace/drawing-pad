@@ -9,42 +9,44 @@
     <script src="app.js" defer></script>
 </head>
 <body>
+  <h1 class="header">Retro Draw</h1>
     <div class="slidecontainer">
         Grid size:
         <div id = "size-display">30x30</div>
         <input type="range" min="1" max="60" value="30" class="slider" id="myRange">
         <button onclick="reset()">Reset</button>
+        <button id="grid-button" data-status = "shown" onclick="clearGrid()">Hide Grid</button>
       </div>
 
     <div class="display">
        
-    <div class="container" id ="container">
+      <div class="container" id ="container">
+      </div>
     </div>
     <div class="settings">
         
-    <div id="pen-colors" class = "color-buttons">
-        Pen Colors:
-        <button onclick="setColor('white');">White</button>
-        <button onclick="setColor('black');">Black</button>
-        <button onclick="setColor('grey');">Grey</button>
-        <button onclick="setColor('blue');">Blue</button>
-        <button onclick="setColor('red');">Red</button>
-        <button onclick="setColor('green');">Green</button>
-        <button onclick="setColor(randomColor());">Random</button>
+      <div id="pen-colors" class = "color-buttons">
+          Pen Colors:
+          <button onclick="setColor('white');">White</button>
+          <button onclick="setColor('black');">Black</button>
+          <button onclick="setColor('grey');">Grey</button>
+          <button onclick="setColor('blue');">Blue</button>
+          <button onclick="setColor('red');">Red</button>
+          <button onclick="setColor('green');">Green</button>
+          <button onclick="setColor(randomColor());">Random</button>
+          
+        </div>
         
+        <div id="bkgd-colors"class = "color-buttons">
+          Background Colors:
+          <button onclick="setBkgd('white');">White</button>
+          <button onclick="setBkgd('black');">Black</button>
+          <button onclick="setBkgd('grey');">Grey</button>
+          <button onclick="setBkgd('blue');">Blue</button>
+          <button onclick="setBkgd('red');">Red</button>
+          <button onclick="setBkgd('green');">Green</button>
+          <button onclick="setBkgd(randomColor());">Random</button>
+        </div>
       </div>
-      
-      <div id="bkgd-colors"class = "color-buttons">
-        Background Colors:
-        <button onclick="setBkgd('white');">White</button>
-        <button onclick="setBkgd('black');">Black</button>
-        <button onclick="setBkgd('grey');">Grey</button>
-        <button onclick="setBkgd('blue');">Blue</button>
-        <button onclick="setBkgd('red');">Red</button>
-        <button onclick="setBkgd('green');">Green</button>
-        <button onclick="setBkgd(randomColor());">Random</button>
-      </div>
-    </div>
-</div>
 </body>
 </html>
