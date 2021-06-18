@@ -32,8 +32,9 @@ const drag = function(e){
 document.addEventListener('mousedown',firstClick)
 document.addEventListener('mouseup', ()=>{mouseDown = false})
 container.addEventListener('mouseover', drag)
+
 slider.addEventListener('input', ()=>{
-    //gets value from slider and changes display, paints the canvas with "value" number of cells squared
+    //gets value from slider and changes display, loads the canvas with "value" number of cells squared
     document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
     newCells(slider.value)
     })
