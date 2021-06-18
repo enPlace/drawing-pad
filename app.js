@@ -7,6 +7,7 @@ let cellCount
 let eraserMode
 
 const firstClick = function(e){
+    //changes the color of a cell when clicked
     mouseDown = true
     if(e.target.classList.contains("cell") && !eraserMode){
         e.target.style.backgroundColor = paintColor
@@ -18,6 +19,7 @@ const firstClick = function(e){
 
 }
 const drag = function(e){
+    //changes the color of a cell when mouse is already clicked down and pointer is moved to the cell
     if(mouseDown&&e.target.classList.contains('cell')&& !eraserMode){
         e.target.style.backgroundColor = paintColor
         e.target.dataset.status = "active"
@@ -30,31 +32,16 @@ const drag = function(e){
 document.addEventListener('mousedown',firstClick)
 document.addEventListener('mouseup', ()=>{mouseDown = false})
 container.addEventListener('mouseover', drag)
-
-
-
 slider.addEventListener('input', ()=>{
+    //gets value from slider and changes display, paints the canvas with "value" number of cells squared
     document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
     newCells(slider.value)
     })
 
 function newCells(num, bkgd){
+    //deletes old cells and repaints canvas with new cells 
     deleteChildren(container)
     populateCells(num, bkgd)
-}
-function reset(){
-    canvasColor='white'
-    paintColor='black'
-    slider.value = "30"
-    document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
-    newCells(30, canvasColor)
-    document.getElementById("grid-button").dataset.status = "none"
-    clearGrid()
-}
-function deleteChildren(parent){
-    while(parent.firstChild){
-        parent.removeChild(parent.firstChild)
-    }
 }
 
 function populateCells(num, bkgd = canvasColor){
@@ -69,8 +56,27 @@ function populateCells(num, bkgd = canvasColor){
 
     }
 }
+function deleteChildren(parent){
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild)
+    }
+}
+
+function reset(){
+    //resets all to default
+    canvasColor='white'
+    paintColor='black'
+    slider.value = "30"
+    document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
+    newCells(30, canvasColor)
+    document.getElementById("grid-button").dataset.status = "none"
+    clearGrid()
+}
+
+
 
 function clearGrid(){
+    //takes away or shows grid lines on the canvas 
     const cells = document.getElementsByClassName("cell")
     const gridButton =  document.getElementById("grid-button")
     if(gridButton.dataset.status == "shown"){
@@ -85,25 +91,24 @@ function clearGrid(){
             cells[i].style.border = ".5px solid rgb(172, 167, 167)"
             gridButton.dataset.status = "shown"
             gridButton.innerHTML = "Hide Grid"
-
         }
-    }
-
-    
-
+    }  
 }
 
 function setColor(color){
+    //sets color of brush 
     paintColor = color
     eraserMode = false
 }
 function eraser(){
+    //turns on eraserMode to paint cells to the canvas color. 
     paintColor = canvasColor
     eraserMode = true
 
 }
 
 function setBkgd(color){
+    //sets the background color
     const cells = document.getElementsByClassName('cell')
     for(let i=0; i<cells.length; i++){
         if(cells[i].dataset.status !="active"){
@@ -118,9 +123,4 @@ function randomColor(){
     return `rgb(${rgb()}, ${rgb()}, ${rgb()})`
 }
 
-newCells(slider.value)
-
-//add a class list active to cell when painting 
-//check to see if active when reseting the color
-//random color
-//slider for setting grid 
+newCells(slider.value) //loads the cells and grid size display on loading the page.
