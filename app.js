@@ -4,27 +4,34 @@ let paintColor ='black'
 let canvasColor = 'white'
 let mouseDown = false
 let cellCount 
+let eraserMode
 
-
-function firstClick(e){
-
-}
-document.addEventListener('mousedown', (e)=>{
+const firstClick = function(e){
     mouseDown = true
-    if(e.target.classList.contains("cell")){
+    if(e.target.classList.contains("cell") && !eraserMode){
         e.target.style.backgroundColor = paintColor
         e.target.dataset.status = "active"
+    }else if(e.target.classList.contains("cell") && eraserMode){
+        e.target.style.backgroundColor = canvasColor
+        e.target.dataset.status = ""
     }
-})
-document.addEventListener('mouseup', ()=>{
-    mouseDown = false
-})
-container.addEventListener('mouseover', (e)=>{
-    if(mouseDown&&e.target.classList.contains('cell')){
-    e.target.style.backgroundColor = paintColor
-    e.target.dataset.status = "active"
+
+}
+const drag = function(e){
+    if(mouseDown&&e.target.classList.contains('cell')&& !eraserMode){
+        e.target.style.backgroundColor = paintColor
+        e.target.dataset.status = "active"
+    }else if(mouseDown&&e.target.classList.contains('cell')&& eraserMode){
+        e.target.style.backgroundColor = canvasColor
+        e.target.dataset.status = ""
     }
-})
+}
+
+document.addEventListener('mousedown',firstClick)
+document.addEventListener('mouseup', ()=>{mouseDown = false})
+container.addEventListener('mouseover', drag)
+
+
 
 slider.addEventListener('input', ()=>{
     document.getElementById("size-display").innerHTML = slider.value + "x" + slider.value;
@@ -88,10 +95,11 @@ function clearGrid(){
 
 function setColor(color){
     paintColor = color
+    eraserMode = false
 }
 function eraser(){
     paintColor = canvasColor
-    document.addEventListener('')
+    eraserMode = true
 
 }
 
