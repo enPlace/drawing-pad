@@ -6,7 +6,9 @@ let mouseDown = false
 let cellCount 
 
 
+function firstClick(e){
 
+}
 document.addEventListener('mousedown', (e)=>{
     mouseDown = true
     if(e.target.classList.contains("cell")){
@@ -86,6 +88,11 @@ function clearGrid(){
 
 function setColor(color){
     paintColor = color
+}
+function eraser(){
+    paintColor = canvasColor
+    document.addEventListener('')
+
 }
 
 function setBkgd(color){
