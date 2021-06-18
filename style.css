@@ -18,10 +18,11 @@ h1{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 
 }
 .slidecontainer{
-    margin-top: 100px;
+    margin-top: -100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,13 +38,15 @@ h1{
     justify-content: center;
 }
 .container{
-    width: 500px;
+    width: 502px;
     height: 500px;
     border: 2px solid black; 
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin: 50px;
     margin-top: 10px;
+    background-color: black;
     
 }
 .cell{
@@ -53,7 +56,7 @@ h1{
 .settings{
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: -40px;
    
     
 }
