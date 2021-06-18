@@ -6,7 +6,11 @@ let mouseDown = false
 let cellCount 
 let eraserMode
 
-const firstClick = function(e){
+
+function firstClick(e){
+
+}
+document.addEventListener('mousedown', (e)=>{
     mouseDown = true
     if(e.target.classList.contains("cell") && !eraserMode){
         e.target.style.backgroundColor = paintColor
@@ -100,6 +104,11 @@ function setColor(color){
 function eraser(){
     paintColor = canvasColor
     eraserMode = true
+
+}
+function eraser(){
+    paintColor = canvasColor
+    document.addEventListener('')
 
 }
 
