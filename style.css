@@ -6,9 +6,6 @@ body{
     align-items: center;
     background-color:rgb(172, 167, 167)
 }
-h1{
-   
-}
 .main-content{
     display:flex;
     flex-wrap: wrap;
